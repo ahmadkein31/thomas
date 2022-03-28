@@ -1,0 +1,55 @@
+<?php $rfq = $this->helper(Ahmad\RFQ\Helper\Data::class);?>
+<?php if($rfq->isEnable()){?>
+<div class="fieldset rfqform-container">
+	<form name="rfqform" id="rfqform" class="form" method="post" action="" data-mage-init='{"validation":{}}'>
+		<strong><?php  echo __("RFQ Form") ?></strong><br />
+		<div class="field rfqname required">
+			<label class="label" for="rfqname"><span>Name</span></label>
+			<div class="control">
+				<input type="text" name="rfqname" id="rfqname" title="Name" class="input-text rfqname" data-validate="{'required':true}">
+			</div>
+		</div>
+		<div class="field rfqemail required">
+			<label class="label" for="rfqname"><span>email</span></label>
+			<div class="control">
+				<input type="text" name="rfqemail" id="rfqemail" title="Email" class="input-text rfqemail" data-validate="{'required':true,'validate-email':true}">
+			</div>
+		</div>
+		<div class="field rfqphone required">
+			<label class="label" for="rfqphone"><span>Phone</span></label>
+			<div class="control">
+				<input type="text" name="rfqphone" id="rfqphone" title="Phone" class="input-text rfqphone" data-validate="{'required':true}">
+			</div>
+		</div>
+		<div class="field rfqquery required">
+			<label class="label" for="rfqname"><span>Query</span></label>
+			<div class="control">
+				<textarea type="text" name="rfquery" id="rfqquery" title="query" class="input-text rfqquery" data-validate="{'required':true}"></textarea>
+			</div>
+		</div>
+		<div class="actions-toolbar">
+			<div class="primary">
+				<button type="submit" title="<?php  echo __('Submit') ?>" class="action submit primary" id="rfqsubmit">
+	               <span><?=__('Submit') ?></span>
+	            </button>
+			</div>
+		</div>
+	</form>
+</div>
+<style>
+.rfqform-container{margin-top:50px;}
+.rfqform-container .field,.rfqform-container .actions-toolbar{margin-top: 20px;}
+.callForPrice, .product-info-price{display:none !important;}
+</style>
+<script>
+    require(['jquery'], function($){
+        $(document).ready( function() {
+            $(".callForPrice").click(function(){
+               $('.rfqform-container').show();
+			   $('html, body').animate({ scrollTop: $('.rfqform-container').offset().top }, 'slow');
+
+            });
+        });
+    });
+</script>
+<?php } ?>
